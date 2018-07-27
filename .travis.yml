@@ -11,8 +11,8 @@ addons:
 
 env:
   global:
-
     # Defaults
+    test_host: localhost
     redis_password: passw0rd!
 
 before_install:
@@ -44,8 +44,7 @@ script:
 #    && (echo 'Idempotence test: pass' && exit 0)
 #    || (echo 'Idempotence test: fail' && exit 1)
 
-  # Request a page via the web server, to make sure it's running and responds.
-  - "redis-cli -a passw0rd1 info"
+  - "redis-cli -a '{{ redis_password }}' info"
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
