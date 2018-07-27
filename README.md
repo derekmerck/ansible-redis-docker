@@ -1,6 +1,8 @@
 Ansible Role for Redis in Docker
 ================================
 
+[![Build Status](https://travis-ci.org/derekmerck/ansible-redis-docker.svg?branch=master)](https://travis-ci.org/derekmerck/ansible-redis-docker)
+
 Derek Merck  
 <derek_merck@brown.edu>  
 Rhode Island Hospital and Brown University  
