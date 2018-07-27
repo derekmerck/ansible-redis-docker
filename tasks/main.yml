@@ -16,3 +16,8 @@
       - "{{ redis_port }}:6379"
     env:
       TZ: America/New_York
+  register: redis_container
+
+- name: Wait until Redis is available
+  wait_for: port={{ redis_port }} delay=3
+  when: orthanc_container.changed
