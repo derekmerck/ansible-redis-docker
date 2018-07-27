@@ -2,3 +2,4 @@
 - hosts: '{{ test_host | default( "localhost") }}'
   roles:
     - role: '{{ "redis-docker" if test_host=="vagrant" else "ansible-redis-docker" }}'
+      redis_port: '{{ lookup("env", "redis_port" ) | default(6379) }}'
