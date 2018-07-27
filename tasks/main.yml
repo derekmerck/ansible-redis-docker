@@ -20,4 +20,4 @@
 
 - name: Wait until Redis is available
   wait_for: port={{ redis_port }} delay=3
-  when: orthanc_container.changed
+  when: redis_container.changed

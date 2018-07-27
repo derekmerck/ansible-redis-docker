@@ -30,6 +30,8 @@ Dependencies
 Role Variables
 --------------
 
+### Docker Image and Tag
+
 Always uses the official [Redis][] image.
 
 [redis]: https://hub.docker.com/_/redis/
