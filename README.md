@@ -40,7 +40,6 @@ Set the Redis version tag.
 redis_docker_image_tag:   "latest"
 ```
 
-
 ### Docker Container Configuration
 
 ```yaml
