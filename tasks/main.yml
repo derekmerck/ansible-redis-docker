@@ -1,0 +1,18 @@
+---
+# tasks file for redis-server
+
+- name: "Pull Redis image - redis:{{ redis_docker_image_tag }}"
+  docker_image:
+    name: 'redis'
+    tag:  '{{ redis_docker_image_tag }}'
+
+- name: Setup Redis container
+  docker_container:
+    name: "{{ redis_container_name }}"
+    image: "redis:{{ redis_docker_image_tag }}"
+    command: ["redis-server", "--requirepass {{ redis_password }}"]
+    state: started
+    ports:
+      - "{{ redis_port }}:6379"
+    env:
+      TZ: America/New_York
