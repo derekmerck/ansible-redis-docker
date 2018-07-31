@@ -6,7 +6,7 @@
     name: 'redis'
     tag:  '{{ redis_docker_image_tag }}'
 
-- name: Setup Redis container
+- name: "Setup Redis container on {{ redis_port }}:6379"
   docker_container:
     name: "{{ redis_container_name }}"
     image: "redis:{{ redis_docker_image_tag }}"
@@ -19,5 +19,5 @@
   register: redis_container
 
 - name: Wait until Redis is available
-  wait_for: port={{ redis_port }} delay=3
+  wait_for: port="{{ redis_port | int }}" delay=3
   when: redis_container.changed
