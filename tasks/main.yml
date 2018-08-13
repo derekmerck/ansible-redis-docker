@@ -6,6 +6,8 @@
     name: 'redis'
     tag:  '{{ redis_docker_image_tag }}'
 
+# TODO: Should have the option to use a data container or data dir here too since these can get big
+
 - name: "Setup Redis container on {{ redis_port }}:6379"
   docker_container:
     name: "{{ redis_container_name }}"
