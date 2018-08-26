@@ -18,6 +18,10 @@
       - "{{ redis_port }}:6379"
     env:
       TZ: America/New_York
+
+    log_driver:   "{{ redis_logger }}"
+    log_options:  "{{ redis_log_opts }}"
+
   register: redis_container
 
 - name: Wait until Redis is available
