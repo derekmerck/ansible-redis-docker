@@ -1,7 +1,13 @@
 ---
 # defaults file for redis-server
 
-logger:                 "json-file"
+# Global defaults
+# -----------------------------
+service_password:          "passw0rd!"
+# data_dir:                  "/data"
+# config_dir:                "/config"
+logger:                    "json-file"
+log_opts:                  {}
 
 # Docker image configuration
 # -----------------------------
@@ -13,9 +19,8 @@ redis_container_name:   "redis"
 redis_port:             6379
 
 redis_logger:           "{{ logger }}"
-redis_log_opts:         "{{ {'splunk-source': redis_container_name } if redis_logger=='splunk' else {} }}"
-
+redis_log_opts:         '{{ log_opts | combine( {"splunk-source": redis_container_name} ) if logger=="splunk" else log_opts }}'
 
 # Service configuration
 # -----------------------------
-redis_password:         "passw0rd!"
+redis_password:         "{{ service_password }}"
